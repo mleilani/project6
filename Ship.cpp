@@ -1,23 +1,23 @@
 #include "Ship.h"
 #include <iostream>
 
-Ship::Ship(std::string name, int yearBuilt)
-    : name(name), yearBuilt(yearBuilt) {}
+Ship::Ship(const std::string& shipName, const std::string& shipYearBuilt)
+    : name(shipName), yearBuilt(shipYearBuilt) {}
 
 std::string Ship::getName() const {
     return name;
 }
 
-void Ship::setName(std::string name) {
-    this->name = name;
+void Ship::setName(const std::string& shipName) {
+    name = shipName;
 }
 
-int Ship::getYearBuilt() const {
+std::string Ship::getYearBuilt() const {
     return yearBuilt;
 }
 
-void Ship::setYearBuilt(int yearBuilt) {
-    this->yearBuilt = yearBuilt;
+void Ship::setYearBuilt(const std::string& shipYearBuilt) {
+    yearBuilt = shipYearBuilt;
 }
 
 void Ship::print() const {
@@ -25,8 +25,16 @@ void Ship::print() const {
     std::cout << "Year Built: " << yearBuilt << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const Ship& ship) {
-    os << "Ship Name: " << ship.name << std::endl;
-    os << "Year Built: " << ship.yearBuilt << std::endl;
-    return os;
+Ship::~Ship() {
+    
+}
+
+Ship& Ship::operator++() {
+    // Increment capacity logic for Ship (if applicable)
+    return *this;
+}
+
+Ship Ship::operator++(int) {
+    // Increment capacity logic for Ship (if applicable)
+    return *this;
 }

@@ -1,25 +1,22 @@
 #include "CruiseShip.h"
 #include <iostream>
 
-CruiseShip::CruiseShip(std::string name, int yearBuilt, int passengerCapacity)
-    : Ship(name, yearBuilt), passengerCapacity(passengerCapacity) {}
+CruiseShip::CruiseShip(const std::string& shipName, const std::string& shipYearBuilt, int maxPass)
+    : Ship(shipName, shipYearBuilt), maxPassengers(maxPass) {}
 
-int CruiseShip::getPassengerCapacity() const {
-    return passengerCapacity;
+int CruiseShip::getMaxPassengers() const {
+    return maxPassengers;
 }
 
-void CruiseShip::setPassengerCapacity(int passengerCapacity) {
-    this->passengerCapacity = passengerCapacity;
+void CruiseShip::setMaxPassengers(int maxPass) {
+    maxPassengers = maxPass;
 }
 
-CruiseShip CruiseShip::operator+(int n) const {
-    CruiseShip newShip(*this);
-    newShip.passengerCapacity += n;
-    return newShip;
+void CruiseShip::incrementCapacity() {
+    ++maxPassengers;
 }
 
-CruiseShip operator+(int n, const CruiseShip& cruiseShip) {
-    return cruiseShip + n;
+void CruiseShip::print() const {
+    Ship::print();
+    std::cout << "Max Passengers: " << maxPassengers << std::endl;
 }
-
-//CruiseShip& CruiseShip::operator++()
